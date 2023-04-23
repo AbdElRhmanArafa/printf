@@ -7,8 +7,7 @@
 int _printf(const char *format, ...)
 {
 	unsigned int characterCount = 0;
-	char *printString;
-	char printChar;
+	char *printString, printChar;
 	va_list listOfArgument;
 
 	va_start(listOfArgument, format);
