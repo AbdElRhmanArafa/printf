@@ -1,10 +1,8 @@
 #include "main.h"
-
 /**
  * _printf - Printf function
  * @format: format.
  * Return:  the number of characters printed
- * (excluding the null byte used to end output to strings)
  */
 int _printf(const char *format, ...)
 {
@@ -18,6 +16,7 @@ int _printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
+			format++;
 			switch (*format)
 			{
 			case 's':
@@ -32,10 +31,10 @@ int _printf(const char *format, ...)
 				characterCount++;
 				format++;
 				break;
-
 			default:
 				putchar('%');
 				characterCount++;
+				format++;
 				break;
 			}
 		}
