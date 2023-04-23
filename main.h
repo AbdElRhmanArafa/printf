@@ -7,4 +7,6 @@
 
 /* Prototype function*/
 int _printf(const char *format, ...);
+int printString(char *printString);
+int printChar(char printChar);
 #endif
