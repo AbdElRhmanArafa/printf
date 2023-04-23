@@ -8,7 +8,6 @@
  */
 int _printf(const char *format, ...)
 {
-	unsigned int countOfArgument = 0;
 	unsigned int characterCount = 0;
 	char *printString;
 	char printChar;
@@ -22,15 +21,13 @@ int _printf(const char *format, ...)
 			switch (*format)
 			{
 			case 's':
-				countOfArgument++;
 				printString = va_arg(listOfArgument, char *);
 				fputs(printString, stdout);
 				characterCount += strlen(printString);
 				format++;
 				break;
 			case 'c':
-				countOfArgument++;
-				printChar = va_arg(listOfArgument, char);
+				printChar = va_arg(listOfArgument, int);
 				putchar(printChar);
 				characterCount++;
 				format++;
@@ -49,5 +46,6 @@ int _printf(const char *format, ...)
 			format++;
 		}
 	}
+	va_end(listOfArgument);
 	return (characterCount);
 }
