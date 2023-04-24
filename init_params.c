@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * init_params - reset to defult 
+ * init_params - reset to defult
  * @param: struct to reset
  * Return: void
  */
