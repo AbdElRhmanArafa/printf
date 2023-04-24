@@ -3,6 +3,7 @@
 _putchar.c
 main.c
 *.o
+*.out
 #ignore folders
 
 test/
