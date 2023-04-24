@@ -16,7 +16,7 @@ int _printf(const char *format, ...)
 	else if (format[0] == '%' && format[1] == ' ' && !format[2])
 		return (-1);
 	va_start(listOfArgument, format);
-	while (*format !='\0')
+	while (*format != '\0')
 	{
 		init_params(&paramters);
 		if (*format == '%')
