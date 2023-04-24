@@ -16,7 +16,7 @@ int _printf(const char *format, ...)
 	else if (format[0] == '%' && format[1] == ' ' && !format[2])
 		return (-1);
 	va_start(listOfArgument, format);
-	while (*format != '\0')
+	while (*format !='\0')
 	{
 		init_params(&paramters);
 		if (*format == '%')
@@ -29,6 +29,7 @@ int _printf(const char *format, ...)
 				if (sp_t.f != NULL)
 				{
 					characterCount += sp_t.f(listOfArgument, &paramters);
+					format++;
 				}
 			}
 			else
@@ -40,6 +41,7 @@ int _printf(const char *format, ...)
 		{
 			characterCount++;
 			putchar(*format);
+			format++;
 		}
 	}
 	va_end(listOfArgument);
