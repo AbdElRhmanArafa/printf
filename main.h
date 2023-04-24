@@ -53,10 +53,10 @@ int print_percentage(va_list argumentToPrint, param_t *param);
 int print_S(va_list argumentToPrint, param_t *param);
 /* specifier.c module */
 int get_modifier(char *s, param_t param);
-int (*get_specifier(char *s))(va_list argumentToPrint, param_t *param);
+int (*get_specifier(char s))(va_list argumentToPrint, param_t *param);
 
 /* params init function */
-void init_params(va_list argumentToPrint, param_t *param);
+void init_params(param_t *param);
 /* Prototype function*/
 int _printf(const char *format, ...);
 #endif
