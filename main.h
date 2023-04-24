@@ -1,43 +1,47 @@
 #ifndef MAIN_H
 #define MAIN_H
-/*stander library*/
+
+/* Standard library */
 #include <stdarg.h>
 #include <stdio.h>
 #include <string.h>
 #include <limits.h>
-#include <stdio.h>
 
-#define INIT_PARAMS                     \
-	{                                   \
-		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 \
-	}
+#define INIT_PARAMS {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+
 /**
- *  struct parameters - parameters sturnct
- * %[flags][width][.precision][length]specifier
+ * struct paramters - parameters struct
+ * @unsign: number signed
+ * @zeroFlag: flag
+ * @plusFlag: flag
+ * @hashFlag: flag
+ * @spaceFlag: flag
+ * @minsFlag: flag
+ * @width: width
+ * @precision: precision
+ * @h_modifier: length
+ * @l_modifier: length
+ * @L_modifier: length
  */
 typedef struct paramters
 {
-	/*number signed*/
-	unsigned int unsign : 1;
-	/*flags*/
-	unsigned int zeroFlag : 1;
-	unsigned int plusFlag : 1;
-	unsigned int hashFlag : 1;
-	unsigned int spaceFlag : 1;
-	unsigned int minsFlag : 1;
-	/*width*/
+	unsigned int unsign;
+	unsigned int zeroFlag;
+	unsigned int plusFlag;
+	unsigned int hashFlag;
+	unsigned int spaceFlag;
+	unsigned int minsFlag;
 	unsigned int width;
 	unsigned int precision;
-	/*Length*/
-	unsigned int h_modifier : 1;
-	unsigned int l_modifier : 1;
-	unsigned int L_modifier : 1;
-
+	unsigned int h_modifier;
+	unsigned int l_modifier;
+	unsigned int L_modifier;
 } param_t;
+
 /**
- * spcifier - ...
- *@sp: specifier
- *@f: function to print spcifer
+ * struct spcifier - specifier struct
+ * @sp: specifier
+ * @f: function to print specifier
  */
 typedef struct spcifier
 {
@@ -49,14 +53,14 @@ typedef struct spcifier
 int print_char(va_list argumentToPrint, param_t *param);
 int print_string(va_list argumentToPrint, param_t *param);
 int print_percentage(va_list argumentToPrint, param_t *param);
-/**
-int print_S(va_list argumentToPrint, param_t *param);
-int print_int(va_list argumentToPrint, param_t *param);*/
+
 /* specifier.c module */
 int (*get_specifier(char s))(va_list argumentToPrint, param_t *param);
-/*int get_modifier(char *s, param_t param);*/
+
 /* params init function */
 void init_params(param_t *param);
-/* Prototype function*/
+
+/* Prototype function */
 int _printf(const char *format, ...);
-#endif
+
+#endif /* MAIN_H */
