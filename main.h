@@ -25,17 +25,21 @@
  */
 typedef struct paramters
 {
-	unsigned int unsign;
-	unsigned int zeroFlag;
-	unsigned int plusFlag;
-	unsigned int hashFlag;
-	unsigned int spaceFlag;
-	unsigned int minsFlag;
+	/*number signed*/
+	unsigned int unsign  : 1;
+	/*flags*/
+	unsigned int zeroFlag: 1;
+	unsigned int plusFlag: 1;
+	unsigned int hashFlag: 1;
+	unsigned int spaceFlag: 1;
+	unsigned int minsFlag: 1;
+	/*width*/
 	unsigned int width;
 	unsigned int precision;
-	unsigned int h_modifier;
-	unsigned int l_modifier;
-	unsigned int L_modifier;
+	/*Length*/
+	unsigned int h_modifier: 1;
+	unsigned int l_modifier: 1;
+	unsigned int L_modifier: 1;
 } param_t;
 
 /**
