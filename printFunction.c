@@ -55,10 +55,9 @@ int print_percentage(va_list __attribute__((unused)) argumentToPrint,
  */
 int print_int(va_list argumentToPrint, __attribute__((unused)) param_t *param)
 {
-	int num = va_arg(argumentToPrint, int);
-	char intStr[12];
-	int len = sprintf(intStr, "%d", num);
-	fputs(intStr, stdout);
-	return len;
+	
+
+	va_arg(argumentToPrint, int);
+	return (0);
 	
 }
