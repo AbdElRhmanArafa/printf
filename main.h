@@ -3,9 +3,11 @@
 
 /* Standard library */
 #include <stdarg.h>
+#include <unistd.h>
 #include <stdio.h>
 #include <string.h>
 #include <limits.h>
+#include <stdlib.h>
 
 #define INIT_PARAMS                     \
 	{                                   \
@@ -62,6 +64,15 @@ int print_string(va_list argumentToPrint, param_t *param);
 int print_percentage(va_list argumentToPrint, param_t *param);
 int print_int(va_list argumentToPrint, param_t *param);
 int print_binary(va_list argumentToPrint, param_t *param);
+/* function declarations */
+int _putchar(char c);
+int _puts(char *str);
+int print_octal(va_list argumentToPrint, param_t *param);
+int print_hex(va_list argumentToPrint, param_t *param);
+int print_HEX(va_list argumentToPrint, param_t *param);
+int print_unsigned(va_list argumentToPrint, param_t *param);
+int print_s(va_list argumentToPrint, param_t *param);
+char *convert_base(unsigned int num, unsigned  int base, int uppercase);
 /* specifier.c module */
 int (*get_specifier(char s))(va_list argumentToPrint, param_t *param);
 
