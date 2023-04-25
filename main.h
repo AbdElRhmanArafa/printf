@@ -61,7 +61,7 @@ int print_char(va_list argumentToPrint, param_t *param);
 int print_string(va_list argumentToPrint, param_t *param);
 int print_percentage(va_list argumentToPrint, param_t *param);
 int print_int(va_list argumentToPrint, param_t *param);
-
+int print_binary(va_list argumentToPrint, param_t *param);
 /* specifier.c module */
 int (*get_specifier(char s))(va_list argumentToPrint, param_t *param);
 

@@ -58,7 +58,34 @@ int print_int(va_list argumentToPrint, __attribute__((unused)) param_t *param)
 	int num = va_arg(argumentToPrint, int);
 	char intStr[12];
 	int len = sprintf(intStr, "%d", num);
+
 	fputs(intStr, stdout);
-	return len;
-	
+	return (len);
+}
+/**
+ * print_binary - prints an unsigned int in binary
+ * @argumentToPrint: argument to print
+ * @param: unused parameter
+ *
+ * Return: length of the binary representation
+ */
+int print_binary(va_list argumentToPrint,
+		__attribute__((unused)) param_t *param)
+{
+	unsigned int num = va_arg(argumentToPrint, unsigned int);
+	unsigned int mask = 1;
+	int count = 0;
+
+	/* Find the highest bit that is set */
+	while ((num & mask) == 0 && mask != 0)
+		mask <<= 1;
+
+	/* Print the binary representation */
+	while (mask != 0)
+	{
+		putchar(num & mask ? '1' : '0');
+		mask >>= 1;
+		count++;
+	}
+	return (count);
 }

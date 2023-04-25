@@ -18,6 +18,8 @@ int (*get_specifier(char s))(va_list argumentToPrint, param_t *param)
 		return(print_int);
 	case 'd':
 		return(print_int);
+	case 'b':
+		return(print_binary);
 	default:
 		return (NULL);
 	}
