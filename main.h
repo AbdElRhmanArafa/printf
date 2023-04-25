@@ -57,6 +57,7 @@ typedef struct spcifier
 int print_char(va_list argumentToPrint, param_t *param);
 int print_string(va_list argumentToPrint, param_t *param);
 int print_percentage(va_list argumentToPrint, param_t *param);
+int print_int(va_list argumentToPrint, param_t *param);
 
 /* specifier.c module */
 int (*get_specifier(char s))(va_list argumentToPrint, param_t *param);
@@ -67,4 +68,4 @@ void init_params(param_t *param);
 /* Prototype function */
 int _printf(const char *format, ...);
 
-#endif /* MAIN_H */
+#endif /* MAIN_H *

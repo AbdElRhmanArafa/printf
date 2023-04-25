@@ -30,7 +30,7 @@ int print_string(va_list argumentToPrint,
 
 	stringTest = va_arg(argumentToPrint, char *);
 	fputs(stringTest, stdout);
-	return (strlen(stringTest));
+	return (_strlen(stringTest));
 }
 
 /**
@@ -45,4 +45,19 @@ int print_percentage(va_list __attribute__((unused)) argumentToPrint,
 {
 	putchar('%');
 	return (1);
+}
+/**
+ * print_int - prints a int
+ * @argumentToPrint: argument to print
+ * @param: unused parameter
+ *
+ * Return: length of the string
+ */
+int print_int(va_list argumentToPrint, __attribute__((unused)) param_t *param)
+{
+	
+
+	va_arg(argumentToPrint, int);
+	return (0);
+	
 }

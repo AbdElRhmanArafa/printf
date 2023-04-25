@@ -14,6 +14,10 @@ int (*get_specifier(char s))(va_list argumentToPrint, param_t *param)
 		return (print_string);
 	case '%':
 		return (print_percentage);
+	case 'i':
+		return(print_int);
+	case 'd':
+		return(print_int);
 	default:
 		return (NULL);
 	}
