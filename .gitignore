@@ -1,6 +1,4 @@
 #ignore files
-
-_putchar.c
 main.c
 *.o
 *.out
