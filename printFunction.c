@@ -73,22 +73,24 @@ int print_binary(va_list argumentToPrint,
 				 __attribute__((unused)) param_t *param)
 {
 	int num = va_arg(argumentToPrint, unsigned int);
-	int i = 31, counter = 0, len, convert = 0, tester = 0;
-	char buffer[33];
+	int i, counter = 0, len, convert = 0, tester = 0;
+	char buffer[33] = {0};
 
-	memset(buffer, 48, sizeof(buffer)-1);
 	if (num == 0)
 	{
 		putchar('0');
-		return (1);
+		return 1;
 	}
 	if (num < 0)
-		tester = 1;
-
-	while (num != 0)
 	{
-		buffer[i] = (num % 2) + '0';
-		i--;
+		tester = 1;
+		num = -num;
+	}
+
+	i = 31;
+	while (num > 0)
+	{
+		buffer[i--] = (num % 2) + '0';
 		num /= 2;
 	}
 	i++;
@@ -99,44 +101,28 @@ int print_binary(va_list argumentToPrint,
 		{
 			if (convert)
 			{
-				if (buffer[len] == 48)
+				if (buffer[len] == '0')
 				{
-					buffer[len] = 49;
+					buffer[len] = '1';
 				}
-				if (buffer[len] == 49)
+				else if (buffer[len] == '1')
 				{
-					buffer[len] = 48;
+					buffer[len] = '0';
 				}
 			}
-			if (buffer[len] == 49)
+			if (buffer[len] == '1')
 			{
 				convert = 1;
 			}
-		}
-		for (i = 0; i < 32; i++)
-		{
-			if (buffer[i])
-			{
-				putchar(buffer[i]);
-				counter++;
-			}
-			else
-			{
-				putchar('1');
-				counter++;
-			}
+			i = 0;
 		}
 	}
-	else
+
+	for (; i < 32; i++)
 	{
-		for (; i < 32; i++)
-		{
-			if (buffer[i])
-			{
-				putchar(buffer[i]);
-				counter++;
-			}
-		}
+		putchar(buffer[i]);
+		counter++;
 	}
-	return (counter);
+
+	return counter;
 }
