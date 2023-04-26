@@ -8,25 +8,19 @@
  * Return: Number of characters printed
  */
 int print_octal(va_list argumentToPrint,
-		__attribute__((unused)) param_t *param)
+				__attribute__((unused)) param_t *param)
 {
 	unsigned int num = va_arg(argumentToPrint, unsigned int);
-	char *octalNum;
+	char *str;
 	int count = 0;
 
-	if (num == 0)
-	{
-		_putchar('0');
-		return (1);
-	}
+	str = convert_base(num, 8, 0);
 
-	octalNum = convert_base(num, 8, 0);
-
-	if (octalNum == NULL)
+	if (str == NULL)
 		return (-1);
 
-	count = _puts(octalNum);
-	free(octalNum);
+	count = _puts(str);
+	free(str);
 
 	return (count);
 }
@@ -87,7 +81,7 @@ int print_HEX(va_list argumentToPrint, __attribute__((unused)) param_t *param)
  * Return: Number of characters printed
  */
 int print_unsigned(va_list argumentToPrint,
-			__attribute__((unused)) param_t *param)
+				   __attribute__((unused)) param_t *param)
 {
 	unsigned int num = va_arg(argumentToPrint, unsigned int);
 	char *unsignedNum;

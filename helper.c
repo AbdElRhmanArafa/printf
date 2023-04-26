@@ -31,37 +31,27 @@ int _strlen(char *s)
  */
 char *convert_base(unsigned int num, unsigned int base, int uppercase)
 {
-	char *str;
+	char *str = NULL;
+	char *digits = uppercase ? "0123456789ABCDEF" : "0123456789abcdef";
+	int num_digits = 0, i;
+
 	unsigned int temp = num;
-	int digits = 0, i;
-
-	 if (base < 2 || base > 16) {
-        return (NULL); 
-    }
-	while (temp != 0)
+	do
 	{
-		digits++;
+		num_digits++;
 		temp /= base;
-	}
+	} while (temp != 0);
 
-	str = malloc(sizeof(char) * (digits + 1));
+	str = (char *)malloc(num_digits + 1);
+	if (!str)
+		return NULL;
 
-	if (str == NULL)
-		return (NULL);
-
-	str[digits] = '\0';
-
-	for (i = digits - 1; i >= 0; i--)
+	str[num_digits] = '\0';
+	for (i = num_digits - 1; i >= 0; i--)
 	{
-		temp = num % base;
-
-		if (temp < 10)
-			str[i] = temp + '0';
-		else
-			str[i] = (uppercase ? 'A' : 'a') + (temp - 10);
-
+		str[i] = digits[num % base];
 		num /= base;
 	}
 
-	return (str);
+	return str;
 }
