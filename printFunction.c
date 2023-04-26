@@ -71,22 +71,73 @@ int print_int(va_list argumentToPrint, __attribute__((unused)) param_t *param)
  * Return: length of the binary representation
  */
 int print_binary(va_list argumentToPrint,
-		__attribute__((unused)) param_t *param)
+				 __attribute__((unused)) param_t *param)
 {
-	unsigned int num = va_arg(argumentToPrint, unsigned int);
-	unsigned int mask = 1;
-	int count = 0;
+	int num = va_arg(argumentToPrint, unsigned int);
+	int i = 31, counter = 0, len, convert = 0, tester = 0;
+	char buffer[33];
 
-	/* Find the highest bit that is set */
-	while ((num & mask) == 0 && mask != 0)
-		mask <<= 1;
-
-	/* Print the binary representation */
-	while (mask != 0)
+	memset(buffer, 48, sizeof(buffer)-1);
+	if (num == 0)
 	{
-		putchar(num & mask ? '1' : '0');
-		mask >>= 1;
-		count++;
+		putchar('0');
+		return (1);
 	}
-	return (count);
+	if (num < 0)
+		tester = 1;
+
+	while (num != 0)
+	{
+		buffer[i] = (num % 2) + '0';
+		i--;
+		num /= 2;
+	}
+	i++;
+	if (tester)
+	{
+		len = 31;
+		for (; len >= 0; len--)
+		{
+			if (convert)
+			{
+				if (buffer[len] == 48)
+				{
+					buffer[len] = 49;
+				}
+				if (buffer[len] == 49)
+				{
+					buffer[len] = 48;
+				}
+			}
+			if (buffer[len] == 49)
+			{
+				convert = 1;
+			}
+		}
+		for (i = 0; i < 32; i++)
+		{
+			if (buffer[i])
+			{
+				putchar(buffer[i]);
+				counter++;
+			}
+			else
+			{
+				putchar('1');
+				counter++;
+			}
+		}
+	}
+	else
+	{
+		for (; i < 32; i++)
+		{
+			if (buffer[i])
+			{
+				putchar(buffer[i]);
+				counter++;
+			}
+		}
+	}
+	return (counter);
 }
