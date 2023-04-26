@@ -76,6 +76,7 @@ int print_binary(va_list argumentToPrint,
 	int i, counter = 0, len, convert = 0, tester = 0;
 	char buffer[33] = {0};
 
+	memset(buffer, '0', sizeof(buffer) - 1);
 	if (num == 0)
 	{
 		putchar('0');
@@ -114,15 +115,24 @@ int print_binary(va_list argumentToPrint,
 			{
 				convert = 1;
 			}
-			i = 0;
+		}
+		i = 0;
+		while (buffer[i])
+		{
+			putchar(buffer[i]);
+			i++;
+			counter++;
 		}
 	}
-
-	for (; i < 32; i++)
+	else
 	{
-		putchar(buffer[i]);
-		counter++;
-	}
 
+		for (; i < 32; i++)
+		{
+
+			putchar(buffer[i]);
+			counter++;
+		}
+	}
 	return counter;
 }
