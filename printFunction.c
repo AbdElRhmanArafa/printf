@@ -61,7 +61,6 @@ int print_int(va_list argumentToPrint, __attribute__((unused)) param_t *param)
 
 	fputs(intStr, stdout);
 	return len;
-	
 }
 /**
  * print_binary - prints an unsigned int in binary
@@ -71,22 +70,48 @@ int print_int(va_list argumentToPrint, __attribute__((unused)) param_t *param)
  * Return: length of the binary representation
  */
 int print_binary(va_list argumentToPrint,
-		__attribute__((unused)) param_t *param)
+				 __attribute__((unused)) param_t *param)
 {
 	unsigned int num = va_arg(argumentToPrint, unsigned int);
-	unsigned int mask = 1;
-	int count = 0;
+	int i = 15, counter = 0, len, convert = 0, tester = 0;
+	char buffer[32] = {'0'};
 
-	/* Find the highest bit that is set */
-	while ((num & mask) == 0 && mask != 0)
-		mask <<= 1;
-
-	/* Print the binary representation */
-	while (mask != 0)
+	if (num == 0)
 	{
-		putchar(num & mask ? '1' : '0');
-		mask >>= 1;
-		count++;
+		putchar('0');
+		return (1);
 	}
-	return (count);
+	if (num > 0)
+		tester = 1;
+
+	while (num != 0)
+	{
+		buffer[i] = (num % 2) + '0';
+		i--;
+		num /= 2;
+	}
+
+	if (tester)
+	{
+		len = 15;
+		for (; len >= 0; len--)
+		{
+			if (buffer[i] == '0' && convert)
+			{
+				buffer[i] = '1';
+			}
+			else if (buffer[i] == '1' && convert)
+			{
+				buffer[i] = '0';
+			}
+			if (buffer[i] == '1')
+				convert = 1;
+		}
+	}
+	for (; i < 16; i++)
+	{
+		putchar(buffer[i]);
+		counter++;
+	}
+	return (counter);
 }
