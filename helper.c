@@ -35,6 +35,9 @@ char *convert_base(unsigned int num, unsigned int base, int uppercase)
 	unsigned int temp = num;
 	int digits = 0, i;
 
+	 if (base < 2 || base > 16) {
+        return (NULL); 
+    }
 	while (temp != 0)
 	{
 		digits++;

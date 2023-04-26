@@ -72,7 +72,6 @@ int print_hex(va_list argumentToPrint, param_t *param);
 int print_HEX(va_list argumentToPrint, param_t *param);
 int print_unsigned(va_list argumentToPrint, param_t *param);
 int print_s(va_list argumentToPrint, param_t *param);
-char *convert_base(unsigned int num, unsigned  int base, int uppercase);
 /* specifier.c module */
 int (*get_specifier(char s))(va_list argumentToPrint, param_t *param);
 
@@ -81,6 +80,7 @@ void init_params(param_t *param);
 
 /*Helpe functionr*/
 int _strlen(char *s);
+char *convert_base(unsigned int num, unsigned  int base, int uppercase);
 /* Prototype function */
 int _printf(const char *format, ...);
 
